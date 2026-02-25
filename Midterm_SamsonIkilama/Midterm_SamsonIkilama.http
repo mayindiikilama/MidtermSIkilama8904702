@@ -1,0 +1,6 @@
+@Midterm_SamsonIkilama_HostAddress = http://localhost:5020
+
+GET {{Midterm_SamsonIkilama_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
