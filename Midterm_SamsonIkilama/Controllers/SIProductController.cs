@@ -21,7 +21,19 @@ namespace Midterm_SamsonIkilama.Controllers
             var products = _productService.GetAll();
             return Ok(products);
         }
-        n
+
+
+        // POST: api/SIProduct
+        [HttpPost]
+        public ActionResult<SIProduct> Add(SIProduct product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var addedProduct = _productService.Add(product);
+            return CreatedAtAction(nameof(GetAll), new { id = addedProduct.Id }, addedProduct);
+        }
 
     }
 }
