@@ -2,11 +2,14 @@
 
 namespace Midterm_SamsonIkilama.Controllers
 {
-    public class SIProductController : Controller
+    [ApiController]
+    [Route("api/[controller]")]
+    public class SIProductController : ControllerBase
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
     }
 }
