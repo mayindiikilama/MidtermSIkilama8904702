@@ -25,15 +25,26 @@ namespace Midterm_SamsonIkilama.Controllers
 
         // POST: api/SIProduct
         [HttpPost]
-        public ActionResult<SIProduct> Add(SIProduct product)
+        public IActionResult Post([FromBody] SIProduct product)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                return BadRequest(new
+                {
+                    error = "InvalidProduct",
+                    message = "Name cannot be empty"
+                });
             }
-            var addedProduct = _productService.Add(product);
-            return CreatedAtAction(nameof(GetAll), new { id = addedProduct.Id }, addedProduct);
-        }
 
+            var created = _productService.Add(product);
+
+            return Created("", new
+            {
+                message = "Product created",
+                Product = created
+            });
+        }
     }
 }
+
+
